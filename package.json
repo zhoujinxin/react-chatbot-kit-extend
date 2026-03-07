@@ -1,7 +1,7 @@
 {
-  "name": "react-chatbot-kit",
+  "name": "react-chatbot-kit-extend",
   "version": "2.2.2",
-  "homepage": "https://fredrikoseberg.github.io/react-chatbot-kit-docs/",
+  "homepage": "https://zhoujinxin.github.io/react-chatbot-kit-extend/",
   "description": "Fully customizable chatbot kit for react.",
   "main": "build/index.js",
   "types": "build/src/index.d.ts",
@@ -10,13 +10,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production",
-    "build-watch": "webpack --watch",
-    "prepare": "yarn run build"
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --mode=production",
+    "build-watch": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --watch",
+    "prepare": "set NODE_OPTIONS=--openssl-legacy-provider && yarn run build"
   },
   "author": {
-    "name": "Fredrik Strand Oseberg",
-    "email": "fredrik.no@gmail.com"
+    "name": "jinxin.zhou",
+    "email": "zjx921102@163.com"
   },
   "devDependencies": {
     "@types/react": "^17.0.21",
@@ -33,6 +33,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FredrikOseberg/react-chatbot-kit"
+    "url": "https://github.com/zhoujinxin/react-chatbot-kit-extend"
   }
 }

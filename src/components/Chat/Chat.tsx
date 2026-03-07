@@ -303,6 +303,15 @@ const Chat = ({
             className="react-chatbot-kit-chat-input-form"
             onSubmit={handleSubmit}
           >
+            <ConditionallyRender
+              condition={!!customComponents.attachment}
+              show={
+                customComponents.attachment && customComponents.attachment(actionProvider)
+              }
+              elseShow={
+                <></>
+              }
+            />
             <input
               className="react-chatbot-kit-chat-input"
               placeholder={placeholder}
