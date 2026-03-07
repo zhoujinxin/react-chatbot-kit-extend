@@ -10,9 +10,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --mode=production",
-    "build-watch": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --watch",
-    "prepare": "set NODE_OPTIONS=--openssl-legacy-provider && yarn run build"
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production",
+    "build-watch": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
+    "prepare": "cross-env NODE_OPTIONS=--openssl-legacy-provider yarn run build"
   },
   "author": {
     "name": "jinxin.zhou",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.21",
+    "cross-env": "^10.1.0",
     "css-loader": "^3.5.1",
     "mini-css-extract-plugin": "^1.4.0",
     "react-svg-loader": "^3.0.3",
