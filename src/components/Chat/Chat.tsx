@@ -278,14 +278,24 @@ const Chat = ({
       const initInput = initialUserMessages[0].message;
       if (validator && typeof validator === 'function') {
         if (validator(initInput)) {
-          handleValidMessage();
+          setState((state: any) => ({
+            ...state,
+            messages: [...state.messages, createChatMessage(initInput, 'user')],
+          }));
+          scrollIntoView();
+          setInputValue('');
           if (parse) {
             return parse(initInput);
           }
           messageParser.parse(initInput);
         }
       } else {
-        handleValidMessage();
+        setState((state: any) => ({
+          ...state,
+          messages: [...state.messages, createChatMessage(initInput, 'user')],
+        }));
+        scrollIntoView();
+        setInputValue('');
         if (parse) {
           return parse(initInput);
         }

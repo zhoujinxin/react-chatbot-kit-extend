@@ -65,7 +65,7 @@ const useChatbot = ({
   }
 
   const [state, setState] = React.useState({
-    messages: [...config.initialMessages],
+    messages: [...config.initialMessages.filter(item => item.type !== 'user')],
     ...initialState,
   });
   const messagesRef = React.useRef(state.messages);
