@@ -270,10 +270,27 @@ const Chat = ({
     placeholder = placeholderText;
   }
 
+  const [initLock, setInitLock] = useState(false);
+
   useEffect(() => {
-    if(initialUserMessages.length > 0){
-      setInputValue(initialUserMessages[0].message);
-      handleSubmit();
+    if(initialUserMessages.length > 0 && !initLock){
+      setInitLock(true);
+      const initInput = initialUserMessages[0].message;
+      if (validator && typeof validator === 'function') {
+        if (validator(initInput)) {
+          handleValidMessage();
+          if (parse) {
+            return parse(initInput);
+          }
+          messageParser.parse(initInput);
+        }
+      } else {
+        handleValidMessage();
+        if (parse) {
+          return parse(initInput);
+        }
+        messageParser.parse(initInput);
+      }
     }
   }, [initialUserMessages]);
 
