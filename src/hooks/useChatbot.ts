@@ -71,6 +71,7 @@ const useChatbot = ({
   const messagesRef = React.useRef(state.messages);
   const stateRef = React.useRef();
   const messageContainerRef: React.MutableRefObject<HTMLDivElement> = React.useRef();
+  const initialUserMessages = config.initialMessages.filter(item => item.type === 'user');
 
   useEffect(() => {
     messagesRef.current = state.messages;
@@ -148,6 +149,7 @@ const useChatbot = ({
     messageContainerRef,
     ActionProvider,
     MessageParser,
+    initialUserMessages,
   };
 };
 

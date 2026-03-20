@@ -55,6 +55,7 @@ const Chatbot = ({
     messagePars,
     state,
     setState,
+    initialUserMessages,
   } = useChatbot({
     config,
     actionProvider,
@@ -96,6 +97,7 @@ const Chatbot = ({
         messageHistory={messageHistory}
         disableScrollToBottom={disableScrollToBottom}
         messageContainerRef={messageContainerRef}
+        initialUserMessages={initialUserMessages}
       />
     );
   } else {
@@ -122,6 +124,7 @@ const Chatbot = ({
             messageHistory={messageHistory}
             disableScrollToBottom={disableScrollToBottom}
             messageContainerRef={messageContainerRef}
+            initialUserMessages={initialUserMessages}
           />
         </MessageParser>
       </ActionProvider>

@@ -40,6 +40,7 @@ interface IChatProps {
   parse?: (message: string) => void;
   actions?: object;
   messageContainerRef: React.MutableRefObject<HTMLDivElement>;
+  initialUserMessages?: IMessage[],
 }
 
 const Chat = ({
@@ -60,6 +61,7 @@ const Chat = ({
   messageHistory,
   actions,
   messageContainerRef,
+  initialUserMessages,
 }: IChatProps) => {
   const { messages } = state;
 
@@ -221,8 +223,10 @@ const Chat = ({
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    if(e){
+      e.preventDefault();
+    }
 
     if (validator && typeof validator === 'function') {
       if (validator(input)) {
@@ -265,6 +269,13 @@ const Chat = ({
   if (placeholderText) {
     placeholder = placeholderText;
   }
+
+  useEffect(() => {
+    if(initialUserMessages.length > 0){
+      setInputValue(initialUserMessages[0].message);
+      handleSubmit();
+    }
+  }, [initialUserMessages]);
 
   return (
     <div className="react-chatbot-kit-chat-container">
